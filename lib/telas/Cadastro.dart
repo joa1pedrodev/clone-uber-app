@@ -1,44 +1,42 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Cadastro extends StatefulWidget {
+  const Cadastro({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Cadastro> createState() => _CadastroState();
 }
 
-class _HomeState extends State<Home> {
+class _CadastroState extends State<Cadastro> {
+  TextEditingController _controllerNome = TextEditingController();
   TextEditingController _controllerEmail = TextEditingController();
   TextEditingController _controllerSenha = TextEditingController();
+  bool _tipoUser = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("img/fundo.png"),
-            fit: BoxFit.cover,
-          ),
+      appBar: AppBar(
+        title: Text(
+          "Crie sua conta",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
+      ),
+      body: Container(
         padding: EdgeInsets.all(16),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 30),
-                  child: Image.asset("img/logo.png", width: 200, height: 150),
-                ),
                 TextField(
-                  controller: _controllerEmail,
+                  controller: _controllerNome,
                   autofocus: true,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                    hintText: "Digite seu E-mail",
+                    hintText: "Digite seu nome completo",
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
@@ -46,6 +44,23 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+                SizedBox(height: 12), //espaçamento entre os campos de texto
+                TextField(
+                  controller: _controllerEmail,
+                  //autofocus: true,
+                  keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(fontSize: 20),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                    hintText: "Digite seu email",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 12), //espaçamento entre os campos de texto
                 TextField(
                   controller: _controllerSenha,
                   //autofocus: true,
@@ -62,7 +77,28 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                //espaçamento estre o TextField e o botão de acessar conta
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    children: [
+                      Switch(
+                        value: _tipoUser,
+                        onChanged: (bool valor) {
+                          setState(() {
+                            _tipoUser = valor;
+                          });
+                        },
+                        activeThumbColor: Color(0xff546e7a),
+                        inactiveThumbColor: Colors.grey.shade400,
+                        inactiveTrackColor: Colors.grey.shade300,
+                      ),
+                      Text(
+                        "Motorista",
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsetsGeometry.only(top: 16, bottom: 10),
                   child: ElevatedButton(
@@ -71,34 +107,12 @@ class _HomeState extends State<Home> {
                       backgroundColor: Color(0xff1ebbd8),
                       padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
                     ),
-
                     child: Text(
-                      "Entrar",
+                      "Criar conta",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
                 ),
-                Center(
-                  child: GestureDetector(
-                    child: Text(
-                      "Não tem conta? Cadastre-se!",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
-                ),
-                /*Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: Center(
-                    child: Text(
-                      "Erro",
-                      style: TextStyle(color: Colors.red, fontSize: 20),
-                    ),
-                  ),
-                ),*/
               ],
             ),
           ),
