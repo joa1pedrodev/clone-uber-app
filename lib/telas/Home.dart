@@ -47,6 +47,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10),
                 TextField(
                   controller: _controllerSenha,
                   //autofocus: true,
@@ -89,10 +90,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Cadastro()),
-                      );
+                      Navigator.pushNamed(context, "/cadastro");
                     },
                   ),
                 ),

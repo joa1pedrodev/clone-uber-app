@@ -44,7 +44,7 @@ class _CadastroState extends State<Cadastro> {
                     ),
                   ),
                 ),
-                SizedBox(height: 12), //espaçamento entre os campos de texto
+                SizedBox(height: 10), //espaçamento entre os campos de texto
                 TextField(
                   controller: _controllerEmail,
                   //autofocus: true,
@@ -60,7 +60,7 @@ class _CadastroState extends State<Cadastro> {
                     ),
                   ),
                 ),
-                SizedBox(height: 12), //espaçamento entre os campos de texto
+                SizedBox(height: 10), //espaçamento entre os campos de texto
                 TextField(
                   controller: _controllerSenha,
                   //autofocus: true,

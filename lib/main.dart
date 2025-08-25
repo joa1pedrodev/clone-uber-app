@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/Rotas.dart';
 import 'package:whatsapp/telas/Home.dart';
 
 final ThemeData temaPadrao = ThemeData(
@@ -13,5 +14,11 @@ final ThemeData temaPadrao = ThemeData(
 );
 
 void main() {
-  runApp(MaterialApp(home: Home(), theme: temaPadrao));
+  runApp(MaterialApp(
+    home: Home(), 
+    theme: temaPadrao,
+    initialRoute: "/",
+    onGenerateRoute: Rotas.gerarRotas,
+    debugShowCheckedModeBanner: false,
+    ));
 }
